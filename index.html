@@ -1,1789 +1,278 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl" data-theme="dark">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>مهدی مجاهد | طراح و توسعه‌دهنده وب</title>
-<meta name="description" content="پورتفولیوی مهدی مجاهد — طراحی وب، ادیت فیلم و عکس، پوستر، لوگو و برندینگ">
-
-<link rel="icon" href="img/20261011_025918.ico" type="image/x-icon">
-<link rel="shortcut icon" href="img/20261011_025918.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="img/20261011_025918.ico">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<script>
-  document.documentElement.classList.remove('no-js');
-  document.documentElement.classList.add('js');
-</script>
-
-<style>
-/* ============================================================
-   1. TOKENS
-   ============================================================ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-:root{
-  --gold:#D9C200;
-  --navy:#001830;
-  --ink:#1D241D;
-  --white:#ffffff;
-  --ease:cubic-bezier(.16,1,.3,1);
-  --ease-2:cubic-bezier(.34,1.56,.64,1);
-
-  --bg:#000d18;
-  --bg-2:#001830;
-  --panel:rgba(255,255,255,.045);
-  --panel-2:rgba(0,24,48,.55);
-  --stroke:rgba(255,255,255,.09);
-  --text:#f1f5f7;
-  --muted:#8b9ba6;
-  --accent-soft:rgba(217,194,0,.13);
-  --nav-bg:rgba(0,13,24,.86);
-  --shadow:0 30px 70px rgba(0,0,0,.6);
-  --glow:0 0 60px rgba(217,194,0,.28);
-  --blend:screen;
-}
-
-html{
-  scroll-behavior:smooth;
-  scroll-padding-top:80px;
-  -webkit-text-size-adjust:100%;
-  overflow-x:clip;
-  max-width:100%;
-}
-@supports not (overflow: clip){
-  html{overflow-x:hidden}
-}
-
-body{
-  font-family:"Vazirmatn",system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  overflow-x:clip;
-  max-width:100%;
-  width:100%;
-  position:relative;
-  line-height:1.85;
-  -webkit-font-smoothing:antialiased;
-
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
-  -webkit-touch-callout:none;
-  -webkit-tap-highlight-color:transparent;
-}
-@supports not (overflow: clip){
-  body{overflow-x:hidden}
-}
-body.lock{overflow:hidden}
-
-input, textarea, [contenteditable="true"]{
-  -webkit-user-select:text;
-  -moz-user-select:text;
-  -ms-user-select:text;
-  user-select:text;
-}
-
-img,video,canvas,svg,iframe{max-width:100%;display:block}
-img{-webkit-user-drag:none;user-drag:none;pointer-events:none}
-
-h1,h2,h3,h4,p,a,span,li,b,small,label,strong,em{
-  overflow-wrap:anywhere;
-  word-wrap:break-word;
-  min-width:0;
-  max-width:100%;
-}
-
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-::selection{background:var(--gold);color:#001830}
-::-moz-selection{background:var(--gold);color:#001830}
-
-::-webkit-scrollbar{width:9px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--navy));border-radius:99px}
-
-/* ============================================================
-   2. BACKGROUND
-   ============================================================ */
-.bg-layer{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
-.aurora{position:absolute;border-radius:50%;filter:blur(110px);opacity:.5;will-change:transform}
-.aurora.a{width:min(58vw,520px);height:min(58vw,520px);background:#D9C200;top:-14vw;right:-14vw;animation:float1 22s ease-in-out infinite}
-.aurora.b{width:min(52vw,480px);height:min(52vw,480px);background:#003a63;bottom:-16vw;left:-16vw;animation:float2 27s ease-in-out infinite}
-.aurora.c{width:min(42vw,380px);height:min(42vw,380px);background:#1D241D;top:42%;left:38%;animation:float3 32s ease-in-out infinite}
-@keyframes float1{50%{transform:translateY(8vh) scale(1.12)}}
-@keyframes float2{50%{transform:translateY(-7vh) scale(1.15)}}
-@keyframes float3{50%{transform:translateY(-6vh) scale(.88)}}
-
-#stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55}
-
-.grain{
-  position:fixed;inset:-200%;z-index:9998;pointer-events:none;opacity:.028;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation:grain 8s steps(6) infinite;
-}
-@keyframes grain{
-  0%,100%{transform:translate(0,0)}10%{transform:translate(-4%,-4%)}20%{transform:translate(-8%,3%)}
-  30%{transform:translate(3%,-7%)}40%{transform:translate(-3%,7%)}50%{transform:translate(-8%,5%)}
-  60%{transform:translate(6%,0)}70%{transform:translate(0,6%)}80%{transform:translate(4%,-4%)}90%{transform:translate(-4%,4%)}
-}
-
-.cursor-glow{
-  position:fixed;width:min(480px,55vw);height:min(480px,55vw);border-radius:50%;
-  background:radial-gradient(circle,rgba(217,194,0,.16),transparent 62%);
-  transform:translate(-50%,-50%);pointer-events:none;z-index:9997;
-  mix-blend-mode:var(--blend);opacity:0;transition:opacity .5s;
-}
-body.has-cursor .cursor-glow{opacity:1}
-@media (hover: none),(pointer: coarse){
-  .cursor-glow{display:none !important}
-}
-
-/* ============================================================
-   3. ANIMATIONS عمومی
-   ============================================================ */
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes shine{to{background-position:220% center}}
-@keyframes angleSpin{to{--a:360deg}}
-@keyframes cardFloat{50%{transform:translateY(-12px)}}
-@keyframes barSweep{60%,100%{transform:translateX(100%)}}
-@keyframes popIn{from{opacity:0;transform:translateY(20px)}}
-@keyframes ping{to{transform:scale(2.6);opacity:0}}
-@keyframes blink{50%{opacity:0}}
-@keyframes wheel{50%{transform:translateY(11px);opacity:.2}}
-@keyframes underline{to{transform:scaleX(1)}}
-@keyframes marquee{to{transform:translateX(-50%)}}
-@keyframes markGlow{50%{box-shadow:0 0 44px rgba(217,194,0,.85)}}
-
-/* ============================================================
-   4. PROGRESS + HEADER
-   ============================================================ */
-.progress{
-  position:fixed;top:0;right:0;height:3px;width:0;z-index:200;
-  background:linear-gradient(90deg,var(--gold),#fff,var(--gold));
-  box-shadow:0 0 18px rgba(217,194,0,.8);
-  transition:width .12s linear;
-}
-
-.header{
-  position:fixed;top:0;right:0;left:0;
-  z-index:130;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.9rem clamp(1rem,4vw,3rem);
-  transition:padding .4s var(--ease),background .4s var(--ease);
-  will-change:padding;
-}
-.header.scrolled{
-  padding:.55rem clamp(1rem,4vw,3rem);
-  background:var(--nav-bg);
-  backdrop-filter:blur(20px) saturate(180%);
-  -webkit-backdrop-filter:blur(20px) saturate(180%);
-  border-bottom:1px solid var(--stroke);
-}
-body.lock .header.scrolled{
-  background:transparent;
-  border-bottom-color:transparent;
-  backdrop-filter:none;
-  -webkit-backdrop-filter:none;
-}
-
-.logo{display:flex;align-items:center;gap:.55rem;font-weight:800;font-size:.95rem;letter-spacing:-.02em;min-width:0}
-.logo-mark{
-  width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
-  background:linear-gradient(140deg,var(--gold),#8a7a00);
-  color:#001830;flex:none;overflow:hidden;
-  box-shadow:0 0 26px rgba(217,194,0,.45);
-  animation:markGlow 4s ease-in-out infinite;
-}
-.logo-mark img{width:68%;height:68%;object-fit:contain;filter:invert(1) brightness(.1)}
-.logo small{display:block;font-size:.52rem;font-weight:500;color:var(--muted);letter-spacing:.14em;line-height:1.2}
-
-.burger{
-  position:relative;z-index:140;width:48px;height:48px;border-radius:15px;
-  display:grid;place-items:center;flex:none;
-  background:var(--panel);border:1px solid var(--stroke);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  transition:background .3s;
-}
-.burger:hover{background:var(--accent-soft)}
-.burger:active{transform:scale(.94)}
-.burger i{
-  display:block;position:absolute;height:2px;width:22px;border-radius:9px;
-  background:var(--text);transition:.4s var(--ease);
-}
-.burger i:nth-child(1){transform:translateY(-6px)}
-.burger i:nth-child(3){transform:translateY(6px)}
-.burger.open i:nth-child(1){transform:rotate(45deg)}
-.burger.open i:nth-child(2){opacity:0;transform:scaleX(0)}
-.burger.open i:nth-child(3){transform:rotate(-45deg)}
-
-/* ============================================================
-   5. NAV
-   ============================================================ */
-.nav{
-  position:fixed;inset:0;z-index:110;
-  background:var(--nav-bg);
-  backdrop-filter:blur(28px) saturate(180%);
-  -webkit-backdrop-filter:blur(28px) saturate(180%);
-  opacity:0;visibility:hidden;transform:translateY(-20px);
-  transition:opacity .45s var(--ease),visibility .45s var(--ease),transform .55s var(--ease);
-  pointer-events:none;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(2rem,7vw,5rem);
-  overflow-y:auto;overflow-x:clip;
-  max-width:100vw;max-height:100vh;
-}
-.nav.open{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
-
-.nav-list{list-style:none;display:flex;flex-direction:column;gap:.15rem;width:100%}
-.nav-list li{overflow:hidden;width:100%}
-.nav-list a{
-  display:inline-flex;align-items:center;gap:.75rem;
-  font-size:clamp(1.15rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.025em;
-  padding:.3rem 0;color:var(--text);
-  transform:translateY(110%);opacity:0;
-  transition:transform .7s var(--ease),opacity .7s var(--ease),color .3s;
-  max-width:100%;
-}
-.nav.open .nav-list a{transform:translateY(0);opacity:1}
-.nav-list li:nth-child(1) a{transition-delay:.1s}
-.nav-list li:nth-child(2) a{transition-delay:.15s}
-.nav-list li:nth-child(3) a{transition-delay:.2s}
-.nav-list li:nth-child(4) a{transition-delay:.25s}
-.nav-list li:nth-child(5) a{transition-delay:.3s}
-.nav-list li:nth-child(6) a{transition-delay:.35s}
-.nav-list a::before{
-  content:"";width:0;height:3px;border-radius:9px;background:var(--gold);
-  transition:width .4s var(--ease);flex:none;
-}
-.nav-list a:hover{color:var(--gold)}
-.nav-list a:hover::before{width:clamp(22px,5vw,50px)}
-
-.nav-foot{
-  margin-top:clamp(1.5rem,5vh,3rem);
-  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
-  opacity:0;transform:translateY(15px);
-  transition:.55s var(--ease) .35s;
-}
-.nav.open .nav-foot{opacity:1;transform:none}
-
-/* ============================================================
-   6. LAYOUT
-   ============================================================ */
-main{position:relative;z-index:1;overflow-x:clip}
-section{
-  padding:clamp(3rem,8vh,6rem) clamp(1rem,3.5vw,3rem);
-  position:relative;overflow-x:clip;
-}
-.wrap{max-width:1140px;margin:0 auto;width:100%}
-
-.eyebrow{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-size:.68rem;font-weight:700;letter-spacing:.2em;
-  color:var(--gold);text-transform:uppercase;margin-bottom:.85rem;
-}
-.eyebrow::before{content:"";width:22px;height:2px;background:var(--gold);border-radius:9px;flex:none}
-
-h2.title{
-  font-size:clamp(1.2rem,3.6vw,2.2rem);font-weight:900;letter-spacing:-.028em;
-  line-height:1.3;margin-bottom:.85rem;
-}
-h2.title em{
-  font-style:normal;
-  background:linear-gradient(105deg,var(--gold),#fff6b0,var(--gold));
-  background-size:220% auto;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:shine 5s linear infinite;
-}
-
-.lead{color:var(--muted);font-size:clamp(.85rem,1.2vw,.95rem);max-width:60ch}
-
-/* ============================================================
-   7. REVEAL
-   ============================================================ */
-[data-reveal]{
-  opacity:0;transform:translateY(40px);
-  transition:opacity .9s var(--ease),transform .9s var(--ease);
-  transition-delay:var(--d,0s);
-}
-[data-reveal="right"]{transform:translateY(55px)}
-[data-reveal="left"]{transform:translateY(45px)}
-[data-reveal="scale"]{transform:translateY(30px) scale(.94)}
-[data-reveal].in{opacity:1;transform:none}
-
-html.no-js [data-reveal]{
-  opacity:1 !important;
-  transform:none !important;
-}
-
-/* ============================================================
-   8. BUTTONS
-   ============================================================ */
-@property --btn-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-.btn{
-  position:relative;display:inline-flex;padding:2px;border-radius:999px;
-  overflow:hidden;isolation:isolate;cursor:pointer;flex:none;max-width:100%;
-}
-.btn::before{
-  content:"";
-  position:absolute;inset:0;border-radius:inherit;padding:2px;
-  background:conic-gradient(
-    from var(--btn-angle),
-    transparent 0deg, transparent 190deg,
-    var(--gold) 265deg, #fff8c4 300deg, var(--gold) 330deg,
-    transparent 360deg
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  animation: btnSpin 3.6s linear infinite;
-  z-index: 0;
-  pointer-events: none;
-}
-.btn:nth-child(even)::before{animation-duration:4.6s;animation-direction:reverse}
-@keyframes btnSpin{to{--btn-angle:360deg}}
-
-.btn > span{
-  position:relative;z-index:1;
-  flex:1 1 auto;
-  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-  padding:.85rem 1.8rem;border-radius:999px;
-  background:var(--panel-2);
-  border:1px solid transparent;
-  backdrop-filter:blur(16px) saturate(180%);
-  -webkit-backdrop-filter:blur(16px) saturate(180%);
-  font-weight:700;font-size:.85rem;white-space:nowrap;
-  text-align:center;min-width:0;
-  transition:background .4s var(--ease),color .4s,letter-spacing .4s var(--ease);
-}
-.btn:hover > span{background:var(--accent-soft);color:var(--gold);letter-spacing:.02em}
-.btn:active{transform:scale(.97)}
-.btn.ghost > span{background:transparent}
-.btn.big > span{padding:1rem 2.4rem;font-size:.9rem}
-
-.btn > span::after{
-  content:"";position:absolute;top:0;bottom:0;width:45%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);
-  transform:translateX(-260%) skewX(-18deg);
-  transition:transform .9s var(--ease);
-}
-.btn:hover > span::after{transform:translateX(260%) skewX(-18deg)}
-
-/* دکمهٔ فرم: تمام‌عرض با span کشیده */
-.form-card > .btn{ width: 100%; }
-.form-card > .btn > span{ width: 100%; }
-
-/* ============================================================
-   9. HERO
-   ============================================================ */
-.hero{
-  min-height:100svh;display:flex;align-items:center;
-  padding-top:7rem;
-}
-.hero-grid{
-  display:grid;grid-template-columns:1.15fr .85fr;
-  gap:clamp(2rem,5vw,4.5rem);align-items:center;
-}
-.hero-grid > *{min-width:0;max-width:100%}
-
-.badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.45rem 1rem;border-radius:999px;
-  background:var(--accent-soft);border:1px solid rgba(217,194,0,.32);
-  font-size:.72rem;font-weight:600;color:var(--gold);margin-bottom:1.2rem;
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  max-width:100%;
-}
-.pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);position:relative;flex:none}
-.pulse-dot::after{
-  content:"";position:absolute;inset:-4px;border-radius:50%;
-  border:1px solid var(--gold);animation:ping 1.8s ease-out infinite;
-}
-
-h1.hero-title{
-  font-size:clamp(1.4rem,5vw,3.1rem);font-weight:900;
-  line-height:1.25;letter-spacing:-.03em;margin-bottom:1rem;
-  word-break:break-word;
-}
-h1.hero-title em{
-  font-style:normal;position:relative;color:var(--gold);
-  text-shadow:0 0 42px rgba(217,194,0,.45);
-}
-h1.hero-title em::after{
-  content:"";position:absolute;right:0;left:0;bottom:.06em;height:.12em;
-  background:var(--gold);opacity:.28;border-radius:9px;
-  transform:scaleX(0);transform-origin:right;
-  animation:underline 1.1s var(--ease) 1.1s forwards;
-}
-
-.hero-sub{font-size:clamp(.82rem,1.3vw,.95rem);color:var(--muted);max-width:52ch;margin-bottom:1.8rem}
-.hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;width:100%}
-.hero-cta > *{min-width:0}
-
-.type-line{
-  font-family:ui-monospace,monospace;font-size:clamp(.68rem,1.8vw,.82rem);color:var(--gold);
-  margin-bottom:.9rem;min-height:1.6em;direction:ltr;text-align:right;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;
-}
-.type-line .caret{
-  display:inline-block;width:7px;height:1em;vertical-align:-2px;
-  background:var(--gold);margin-right:4px;animation:blink 1s steps(2) infinite;
-}
-
-.hero-card{
-  position:relative;border-radius:26px;padding:1.7rem;
-  background:var(--panel);border:1px solid var(--stroke);
-  backdrop-filter:blur(22px) saturate(170%);
-  -webkit-backdrop-filter:blur(22px) saturate(170%);
-  box-shadow:var(--shadow);
-  animation:cardFloat 7s ease-in-out infinite;
-  min-width:0;max-width:100%;
-}
-.hero-card::before{
-  content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;
-  background:linear-gradient(140deg,rgba(217,194,0,.6),transparent 40%,transparent 60%,rgba(217,194,0,.35));
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
-}
-.avatar-ring{
-  width:88px;height:88px;border-radius:50%;margin:0 auto 1rem;
-  display:grid;place-items:center;position:relative;
-  background:conic-gradient(from 0deg,var(--gold),#001830,var(--gold));
-  animation:spin 7s linear infinite;
-}
-.avatar-inner{
-  position:absolute;inset:4px;border-radius:50%;background:var(--bg-2);
-  display:grid;place-items:center;overflow:hidden;
-  animation:spin 7s linear infinite reverse;
-}
-.avatar-inner img{width:66%;height:66%;object-fit:contain}
-.hero-card h3{text-align:center;font-size:.95rem;font-weight:800;margin-bottom:.2rem}
-.hero-card p.role{text-align:center;color:var(--muted);font-size:.74rem;margin-bottom:1.1rem}
-
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
-.stat{
-  text-align:center;padding:.7rem .25rem;border-radius:12px;
-  background:var(--panel);border:1px solid var(--stroke);
-  transition:.4s var(--ease);min-width:0;
-}
-.stat:hover{transform:translateY(-5px);border-color:rgba(217,194,0,.4);background:var(--accent-soft)}
-.stat b{display:block;font-size:1.05rem;font-weight:900;color:var(--gold)}
-.stat span{font-size:.6rem;color:var(--muted)}
-
-.scroll-hint{
-  position:absolute;bottom:1.8rem;right:50%;transform:translateX(50%);
-  display:flex;flex-direction:column;align-items:center;gap:.4rem;
-  font-size:.62rem;color:var(--muted);letter-spacing:.2em;
-}
-.mouse{
-  width:22px;height:34px;border-radius:99px;border:1.5px solid var(--muted);
-  display:grid;justify-items:center;padding-top:5px;
-}
-.mouse i{width:3px;height:6px;border-radius:9px;background:var(--gold);animation:wheel 1.7s ease-in-out infinite}
-
-/* ============================================================
-   10. MARQUEE
-   ============================================================ */
-.marquee{
-  direction:ltr;overflow:hidden;padding:1rem 0;
-  border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke);
-  background:var(--panel);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
-}
-.marquee-track{display:flex;gap:clamp(1.5rem,4vw,3rem);width:max-content;animation:marquee 26s linear infinite}
-.marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-track span{
-  font-size:clamp(.72rem,1.7vw,1.15rem);font-weight:800;white-space:nowrap;
-  color:transparent;-webkit-text-stroke:1px var(--muted);letter-spacing:-.02em;
-  transition:color .4s;
-}
-.marquee-track span:nth-child(odd){color:var(--gold);-webkit-text-stroke:0}
-.marquee-track span:hover{color:var(--gold);-webkit-text-stroke:0}
-
-/* ============================================================
-   11. ABOUT
-   ============================================================ */
-.about-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:clamp(2rem,5vw,4rem);align-items:center;
-}
-.about-grid > *{min-width:0;max-width:100%}
-
-.about-text p{color:var(--muted);margin-bottom:.9rem;font-size:clamp(.82rem,1.2vw,.92rem)}
-.about-text strong{color:var(--text);font-weight:700}
-
-.resume-items{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem}
-.resume-items li{
-  display:flex;align-items:flex-start;gap:.7rem;
-  color:var(--muted);font-size:clamp(.8rem,1.1vw,.88rem);
-}
-.resume-items li i{
-  color:var(--gold);font-size:.85rem;margin-top:.35rem;flex:none;
-  width:1.1rem;text-align:center;
-}
-.resume-items li strong{color:var(--text)}
-
-.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem}
-.chip{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.42rem .9rem;border-radius:999px;font-size:.72rem;font-weight:600;
-  background:var(--panel);border:1px solid var(--stroke);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  transition:.35s var(--ease);cursor:default;
-}
-.chip i{color:var(--gold);font-size:.75rem}
-.chip:hover{transform:translateY(-3px) scale(1.04);border-color:var(--gold);color:var(--gold);box-shadow:var(--glow)}
-
-.about-visual{position:relative;aspect-ratio:1;width:100%;max-width:min(100%,360px);margin-inline:auto}
-.orbit{
-  position:absolute;inset:0;border-radius:50%;
-  border:1px dashed rgba(217,194,0,.25);
-  animation:spin 30s linear infinite;
-  will-change:transform;
-}
-.orbit:nth-child(2){inset:14%;animation-duration:22s;animation-direction:reverse;border-style:solid;border-color:rgba(217,194,0,.14)}
-.orbit:nth-child(3){inset:28%;animation-duration:16s;border-color:rgba(217,194,0,.1)}
-.orbit i{
-  position:absolute;top:-8px;right:50%;width:14px;height:14px;border-radius:50%;
-  background:var(--gold);box-shadow:0 0 22px var(--gold);
-}
-.core{
-  position:absolute;inset:36%;border-radius:50%;
-  background:linear-gradient(140deg,var(--gold),#001830);
-  display:grid;place-items:center;
-  box-shadow:0 0 60px rgba(217,194,0,.45);
-  animation:cardFloat 6s ease-in-out infinite;
-  overflow:hidden;padding:14%;
-}
-.core img{width:100%;height:100%;object-fit:contain}
-
-/* ============================================================
-   12. SKILLS
-   ============================================================ */
-.skills-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));
-  gap:.9rem;margin-top:2rem;
-}
-.skill{
-  padding:1.15rem 1.3rem;border-radius:16px;
-  background:var(--panel);border:1px solid var(--stroke);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  transition:.45s var(--ease);position:relative;overflow:hidden;
-  min-width:0;
-}
-.skill::before{
-  content:"";position:absolute;inset:0;opacity:0;transition:.45s;
-  background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(217,194,0,.13),transparent 45%);
-}
-.skill:hover::before{opacity:1}
-.skill:hover{transform:translateY(-5px);border-color:rgba(217,194,0,.45);box-shadow:var(--shadow)}
-
-.skill-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;position:relative;gap:.5rem}
-.skill-name{font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:.5rem;min-width:0}
-.skill-name i{font-style:normal;font-size:.9rem;flex:none;color:var(--gold);width:1.1rem;text-align:center}
-.skill-num{font-weight:900;color:var(--gold);font-size:.88rem;font-variant-numeric:tabular-nums;flex:none}
-.skill-bar{height:6px;border-radius:99px;background:var(--stroke);overflow:hidden;position:relative}
-.skill-bar i{
-  display:block;height:100%;width:0;border-radius:99px;
-  background:linear-gradient(90deg,var(--gold),#fff2a0,var(--gold));
-  background-size:200% auto;
-  box-shadow:0 0 18px rgba(217,194,0,.6);
-  transition:width 1.6s var(--ease);
-  animation:shine 3s linear infinite;
-}
-.skill-bar i::after{
-  content:"";position:absolute;top:0;bottom:0;left:0;right:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
-  transform:translateX(-100%);animation:barSweep 2.4s ease-in-out infinite;
-}
-
-/* کارت ویژه: نرم‌افزارهای دیگر — با حاشیهٔ نقطه‌چین */
-.skill.skill-more{
-  border-style:dashed;
-  border-color:rgba(217,194,0,.35);
-}
-.skill.skill-more .skill-bar i{
-  background:repeating-linear-gradient(
-    90deg,
-    var(--gold) 0,
-    var(--gold) 6px,
-    rgba(217,194,0,.25) 6px,
-    rgba(217,194,0,.25) 12px
-  );
-  background-size:auto;
-  animation:none;
-}
-
-/* یادداشت زیر گرید مهارت‌ها */
-.skills-note-wrap{
-  text-align:center;
-  width:100%;
-}
-.skills-note{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:.55rem;
-  margin:1.6rem auto 0;
-  padding:.7rem 1.3rem;
-  border-radius:99px;
-  background:var(--accent-soft);
-  border:1px dashed rgba(217,194,0,.4);
-  color:var(--gold);
-  font-size:.8rem;
-  font-weight:600;
-  text-align:center;
-  max-width:100%;
-  line-height:1.7;
-}
-.skills-note i{
-  font-size:.95rem;
-  flex:none;
-  animation:markGlow 3s ease-in-out infinite;
-}
-@media (max-width:640px){
-  .skills-note{font-size:.72rem;padding:.55rem 1rem;gap:.4rem}
-  .skills-note i{font-size:.85rem}
-}
-
-/* ============================================================
-   13. CTA
-   ============================================================ */
-.cta-box{
-  position:relative;border-radius:26px;padding:clamp(2rem,5vw,3.8rem);
-  text-align:center;overflow:hidden;
-  background:var(--panel);border:1px solid var(--stroke);
-  backdrop-filter:blur(22px) saturate(170%);
-  -webkit-backdrop-filter:blur(22px) saturate(170%);
-  box-shadow:var(--shadow);
-}
-.cta-box::before{
-  content:"";position:absolute;inset:-2px;border-radius:inherit;padding:1.5px;
-  background:conic-gradient(from var(--a,0deg),transparent 0 65%,var(--gold) 80%,transparent 100%);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;
-  animation:angleSpin 6s linear infinite;pointer-events:none;
-}
-@property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
-
-.cta-box h2{
-  font-size:clamp(1.1rem,3.2vw,1.9rem);font-weight:900;
-  letter-spacing:-.028em;margin-bottom:.9rem;position:relative;
-}
-.cta-box p{color:var(--muted);max-width:48ch;margin:0 auto 1.8rem;position:relative;font-size:clamp(.82rem,1.2vw,.92rem)}
-
-/* ============================================================
-   14. COMMENTS
-   ============================================================ */
-.comments-grid{
-  display:grid;grid-template-columns:.95fr 1.05fr;
-  gap:clamp(1.5rem,4vw,2.5rem);margin-top:2rem;
-  align-items:stretch;
-}
-.comments-grid > *{min-width:0;max-width:100%}
-
-.form-card{
-  padding:clamp(1.2rem,3.5vw,1.7rem);border-radius:20px;
-  background:var(--panel);border:1px solid var(--stroke);
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  display:flex;flex-direction:column;
-}
-.field{margin-bottom:.9rem;position:relative}
-.field label{display:block;font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:.4rem}
-.field input,.field textarea{
-  width:100%;padding:.8rem .95rem;border-radius:12px;
-  background:var(--panel);border:1px solid var(--stroke);
-  color:var(--text);font:inherit;font-size:.85rem;
-  transition:.35s var(--ease);resize:vertical;
-}
-.field input:focus,.field textarea:focus{
-  outline:none;border-color:var(--gold);
-  box-shadow:0 0 0 4px var(--accent-soft);
-  background:var(--panel-2);
-}
-.field textarea{min-height:100px;flex:1}
-.form-msg{font-size:.75rem;margin-top:.7rem;min-height:1.3em;color:var(--gold)}
-
-.comments-list{
-  display:flex;flex-direction:column;gap:.8rem;
-  overflow-y:auto;padding-left:.3rem;
-}
-.comment{
-  padding:1rem 1.15rem;border-radius:16px;
-  background:var(--panel);border:1px solid var(--stroke);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  display:flex;gap:.85rem;align-items:flex-start;
-  animation:popIn .55s var(--ease) both;
-  transition:.4s var(--ease);
-  flex:0 0 auto;
-}
-.comment:hover{border-color:rgba(217,194,0,.4)}
-.c-avatar{
-  width:38px;height:38px;border-radius:12px;flex:none;display:grid;place-items:center;
-  font-weight:900;color:#001830;font-size:.88rem;
-  background:linear-gradient(140deg,var(--gold),#a89300);
-}
-.c-body{flex:1;min-width:0}
-.c-head{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.25rem}
-.c-name{font-weight:800;font-size:.85rem}
-.c-time{font-size:.62rem;color:var(--muted)}
-.c-text{font-size:.8rem;color:var(--muted);line-height:1.8;word-break:break-word}
-.empty-note{
-  color:var(--muted);font-size:.8rem;text-align:center;padding:2rem .9rem;
-  border:1px dashed var(--stroke);border-radius:16px;
-}
-
-.load-more-wrap{display:flex;justify-content:center;padding-top:.8rem}
-.load-more-wrap .btn > span{padding:.65rem 1.4rem;font-size:.78rem}
-
-@media (min-width: 901px){
-  .form-card{ height: 600px; }
-  .comments-list{ height: 600px; max-height: 600px; }
-}
-
-/* ============================================================
-   15. SOCIAL
-   ============================================================ */
-.social-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));
-  gap:.8rem;margin-top:2rem;
-}
-.social{
-  position:relative;padding:1.2rem .8rem;border-radius:18px;text-align:center;
-  background:var(--panel);border:1px solid var(--stroke);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  overflow:hidden;transition:.5s var(--ease);min-width:0;
-}
-.social::before{
-  content:"";position:absolute;inset:0;opacity:0;
-  background:linear-gradient(140deg,var(--accent-soft),transparent);
-  transition:.5s;
-}
-.social:hover::before{opacity:1}
-.social:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:var(--glow)}
-.social i{font-size:1.35rem;display:block;margin-bottom:.4rem;position:relative;transition:.5s var(--ease-2);color:var(--gold)}
-.social:hover i{transform:scale(1.18)}
-.social b{display:block;font-size:.78rem;font-weight:700;position:relative}
-.social small{font-size:.6rem;color:var(--muted);position:relative}
-
-.social.coming-soon{opacity:.7;cursor:default}
-.social.coming-soon:hover{transform:none;border-color:var(--stroke);box-shadow:none}
-.social.coming-soon i{opacity:.5}
-.social .soon-tag{
-  position:absolute;top:.5rem;left:.5rem;
-  font-size:.55rem;font-weight:700;
-  padding:.2rem .5rem;border-radius:99px;
-  background:var(--accent-soft);color:var(--gold);
-  border:1px solid rgba(217,194,0,.25);
-}
-
-/* ============================================================
-   16. FOOTER
-   ============================================================ */
-footer{
-  position:relative;z-index:1;
-  padding:clamp(2.2rem,6vw,4rem) clamp(1rem,3.5vw,3rem) 1.5rem;
-  border-top:1px solid var(--stroke);
-  background:var(--panel);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  overflow-x:clip;
-}
-.foot-top{
-  display:flex;justify-content:space-between;align-items:center;gap:1.2rem;
-  flex-wrap:wrap;padding-bottom:1.8rem;border-bottom:1px solid var(--stroke);
-}
-.foot-top > *{min-width:0}
-.foot-top h3{font-size:clamp(.95rem,2vw,1.35rem);font-weight:900;letter-spacing:-.028em;margin-bottom:.3rem}
-.foot-top p{color:var(--muted);font-size:.78rem}
-.foot-bottom{
-  padding-top:1.3rem;display:flex;justify-content:space-between;
-  align-items:center;gap:.9rem;flex-wrap:wrap;
-  font-size:.7rem;color:var(--muted);
-}
-.foot-bottom > *{min-width:0}
-.foot-bottom a{color:var(--gold);font-weight:700;transition:.3s}
-.foot-bottom a:hover{text-shadow:0 0 18px var(--gold)}
-
-.to-top{
-  position:fixed;z-index:80;
-  bottom:max(1.2rem,env(safe-area-inset-bottom));
-  left:max(1.2rem,env(safe-area-inset-left));
-  width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
-  background:var(--panel-2);border:1px solid var(--stroke);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  opacity:0;transform:translateY(15px);pointer-events:none;
-  transition:.5s var(--ease-2);
-}
-.to-top.show{opacity:1;transform:none;pointer-events:auto}
-.to-top:hover{background:var(--accent-soft);border-color:var(--gold);transform:translateY(-4px)}
-
-/* ============================================================
-   17. RESPONSIVE — TABLET (≤ 900px)
-   ============================================================ */
-@media (max-width:900px){
-  .hero{min-height:auto;padding-top:6rem;padding-bottom:3rem}
-  .hero-grid{grid-template-columns:1fr;gap:2rem}
-  h1.hero-title{font-size:clamp(1.4rem,6vw,2.4rem)}
-  .about-grid{grid-template-columns:1fr;gap:2rem}
-  .about-visual{max-width:min(85%,300px)}
-  .comments-grid{grid-template-columns:1fr}
-  .form-card{position:static;height:auto}
-  .comments-list{max-height:520px;height:auto}
-  .foot-top{flex-direction:column;align-items:flex-start;gap:1rem}
-  .foot-bottom{flex-direction:column;align-items:flex-start;gap:.4rem;text-align:start}
-}
-
-/* ============================================================
-   18. RESPONSIVE — MOBILE (≤ 640px)
-   ============================================================ */
-@media (max-width:640px){
-  section{padding:2.6rem 1rem}
-
-  .header{padding:.65rem .9rem}
-  .header.scrolled{padding:.5rem .9rem}
-  .logo{font-size:.9rem;gap:.45rem}
-  .logo-mark{width:34px;height:34px;border-radius:11px}
-  .logo small{font-size:.5rem;letter-spacing:.1em}
-
-  .burger{width:42px;height:42px;border-radius:13px}
-  .burger i{width:19px}
-
-  .nav{padding:4.8rem 1.2rem 1.4rem;justify-content:flex-start}
-  .nav-list a{font-size:clamp(1.1rem,5vw,1.5rem);gap:.5rem;padding:.25rem 0}
-  .nav-list a::before{height:2px}
-  .nav-foot{margin-top:1.5rem;gap:.7rem}
-
-  .hero{padding-top:4.8rem;padding-bottom:2.5rem}
-  .badge{font-size:.66rem;padding:.35rem .8rem;margin-bottom:1rem}
-  h1.hero-title{font-size:clamp(1.3rem,6.5vw,1.9rem);margin-bottom:.9rem;line-height:1.28}
-  .hero-sub{font-size:.82rem;margin-bottom:1.4rem}
-
-  /* دکمه‌های هیرو: همان الگوی دکمهٔ ارسال نظر — تمام‌عرض با span کشیده */
-  .hero-cta{
-    gap:.55rem;
-    flex-direction:column;
-    align-items:stretch;
-    width:100%;
-  }
-  .hero-cta .btn{
-    width:100%;
-    max-width:100%;
-  }
-  .hero-cta .btn > span{
-    width:100%;
-    padding:.8rem 1.2rem;
-    font-size:.8rem;
-    gap:.4rem;
-  }
-
-  .btn > span{padding:.75rem 1.4rem;font-size:.8rem;gap:.4rem}
-  .btn.big > span{padding:.85rem 1.6rem;font-size:.84rem}
-
-  .hero-card{padding:1.3rem 1.1rem;border-radius:20px}
-  .avatar-ring{width:74px;height:74px;margin-bottom:.9rem}
-  .hero-card h3{font-size:.9rem}
-  .hero-card p.role{font-size:.7rem;margin-bottom:1rem}
-  .stat-row{gap:.4rem}
-  .stat{padding:.55rem .2rem;border-radius:11px}
-  .stat b{font-size:.95rem}
-  .stat span{font-size:.55rem}
-
-  .scroll-hint{display:none}
-
-  .marquee{padding:.8rem 0}
-
-  .eyebrow{font-size:.62rem;letter-spacing:.18em;margin-bottom:.7rem}
-  h2.title{font-size:clamp(1.05rem,4.5vw,1.5rem);margin-bottom:.7rem}
-  .lead{font-size:.82rem}
-
-  .chips{gap:.4rem;margin-top:1.1rem}
-  .chip{font-size:.68rem;padding:.35rem .75rem}
-  .about-visual{max-width:min(85%,240px)}
-  .about-text p{font-size:.8rem}
-  .resume-items li{font-size:.78rem}
-
-  .skills-grid{grid-template-columns:1fr;gap:.65rem;margin-top:1.6rem}
-  .skill{padding:.95rem 1.05rem;border-radius:14px}
-  .skill-name{font-size:.82rem;gap:.4rem}
-  .skill-num{font-size:.82rem}
-  .skill-bar{height:5px}
-
-  .cta-box{padding:1.7rem 1.1rem;border-radius:20px}
-  .cta-box h2{font-size:clamp(1.05rem,5vw,1.5rem)}
-  .cta-box p{font-size:.8rem;margin-bottom:1.3rem}
-
-  .comments-grid{gap:1.2rem;margin-top:1.6rem}
-  .form-card{padding:1.1rem .95rem;border-radius:16px}
-  .field label{font-size:.68rem}
-  .field input,.field textarea{padding:.7rem .85rem;font-size:.82rem;border-radius:11px}
-  .field textarea{min-height:90px}
-  .comment{padding:.85rem .95rem;border-radius:14px;gap:.7rem}
-  .c-avatar{width:34px;height:34px;border-radius:11px;font-size:.82rem}
-  .c-name{font-size:.78rem}
-  .c-text{font-size:.75rem}
-  .c-time{font-size:.58rem}
-
-  .social-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin-top:1.6rem}
-  .social{padding:1rem .55rem;border-radius:15px}
-  .social i{font-size:1.2rem;margin-bottom:.3rem}
-  .social b{font-size:.75rem}
-  .social small{font-size:.58rem}
-
-  footer{padding:2.2rem 1rem 1.4rem}
-  .foot-top h3{font-size:1rem}
-  .foot-top p{font-size:.74rem}
-  .foot-bottom{font-size:.66rem;line-height:1.9}
-
-  .to-top{width:40px;height:40px;border-radius:12px;font-size:.9rem}
-}
-
-/* ============================================================
-   19. RESPONSIVE — SMALL MOBILE (≤ 400px)
-   ============================================================ */
-@media (max-width:400px){
-  section{padding:2.2rem .85rem}
-  h1.hero-title{font-size:clamp(1.2rem,7vw,1.7rem)}
-  .hero-sub{font-size:.78rem}
-  .hero-cta .btn > span{padding:.7rem 1rem;font-size:.76rem}
-  .btn > span{padding:.7rem 1.15rem;font-size:.76rem}
-  .btn.big > span{padding:.78rem 1.35rem;font-size:.8rem}
-  .nav-list a{font-size:1.15rem}
-  .social-grid{gap:.5rem}
-  .social{padding:.85rem .5rem}
-  .social b{font-size:.7rem}
-  .social small{font-size:.54rem}
-  .stat b{font-size:.88rem}
-  .hero-card{padding:1.1rem .9rem}
-  .about-visual{max-width:min(85%,200px)}
-  .cta-box{padding:1.4rem .9rem}
-  .foot-top h3{font-size:.95rem}
-}
-
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-  [data-reveal]{opacity:1!important;transform:none!important}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SentinelAI - Real-time intrusion detection system using RandomForest on CICIDS2017. SOC dashboard with polyglot SQL, MongoDB, and Redis architecture. Download for Windows.">
+    <meta name="keywords" content="bcrypt, bootstrap, chart-js, cicids2017, cybersecurity, flask, fpdf, ids, intrusion-detection, machine-learning, mongodb, numpy, pandas, python, random-forest, redis, scikit-learn, soc, sqlalchemy, sqlite">
+    <meta name="author" content="SentinelAI">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="SentinelAI - Real-time Intrusion Detection System for Windows">
+    <meta property="og:description" content="Detect 15 types of cyber attacks in real-time with machine learning. Simple setup, powerful SOC dashboard, and no programming knowledge required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/swapnilsingh972/SentinelAI">
+    <title>SentinelAI - Real-Time Intrusion Detection System | Download for Windows</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #2d3748;
+            font-size: 1.6em;
+            margin: 25px 0 15px 0;
+        }
+        h3 {
+            color: #4a5568;
+            font-size: 1.2em;
+            margin: 15px 0 10px 0;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .button {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            display: inline-block;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+        }
+        .badge {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .feature-card h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .step-container {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        code {
+            background: #edf2f7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #553c9a;
+        }
+        ul, ol {
+            margin: 15px 0 15px 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        strong {
+            color: #2d3748;
+        }
+        .faq-item {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .tag-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            font-size: 0.9em;
+            color: #718096;
+        }
+        .tag-section span {
+            background: #edf2f7;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin: 3px;
+            display: inline-block;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-<!-- ===== BACKGROUND ===== -->
-<div class="bg-layer">
-  <div class="aurora a"></div>
-  <div class="aurora b"></div>
-  <div class="aurora c"></div>
-</div>
-<canvas id="stars"></canvas>
-<div class="grain"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
-<div class="progress" id="progress"></div>
-
-<!-- ===== HEADER ===== -->
-<header class="header" id="header">
-  <a href="#home" class="logo">
-    <span class="logo-mark">
-      <img src="img/20261011_025918.ico" alt="مهدی مجاهد">
-    </span>
-    <span>
-      مهدی مجاهد
-      <small>WEB &amp; VISUAL</small>
-    </span>
-  </a>
-
-  <button class="burger" id="burger" aria-label="منو" aria-expanded="false">
-    <i></i><i></i><i></i>
-  </button>
-</header>
-
-<!-- ===== NAV ===== -->
-<nav class="nav" id="nav">
-  <ul class="nav-list">
-    <li><a href="#home"      data-nav>خانه</a></li>
-    <li><a href="#about"     data-nav>درباره من</a></li>
-    <li><a href="#skills"    data-nav>مهارت‌ها</a></li>
-    <li><a href="#portfolio" data-nav>نمونه‌کارها</a></li>
-    <li><a href="#comments"  data-nav>نظرات</a></li>
-    <li><a href="#contact"   data-nav>ارتباط</a></li>
-  </ul>
-</nav>
-
-<main>
-
-<!-- ===== HERO ===== -->
-<section id="home" class="hero">
-  <div class="wrap hero-grid">
-
-    <div>
-      <div class="badge" data-reveal>
-        <span class="pulse-dot"></span>
-        آمادهٔ همکاری در پروژه‌های جدید
-      </div>
-
-      <div class="type-line" data-reveal style="--d:.05s">
-        <span id="typed"></span><span class="caret"></span>
-      </div>
-
-      <h1 class="hero-title">
-        <span data-reveal style="--d:.1s">سلام، من <em>مهدی مجاهد</em> هستم</span><br>
-        <span data-reveal style="--d:.22s">می‌سازم، طراحی می‌کنم،</span><br>
-        <span data-reveal style="--d:.34s">روایت می‌کنم.</span>
-      </h1>
-
-      <p class="hero-sub" data-reveal style="--d:.46s">
-        طراح گرافیک، تدوینگر و توسعه‌دهنده وب با بیش از ۸ سال تجربه.
-        از طراحی پوستر و لوگو تا ساخت فیلم و کدنویسی وب — ایده‌ها را به واقعیت تبدیل می‌کنم.
-      </p>
-
-      <div class="hero-cta" data-reveal style="--d:.58s">
-        <a href="#portfolio" class="btn"><span>مشاهده نمونه‌کارها <i class="fa-solid fa-arrow-up-left"></i></span></a>
-        <a href="#contact" class="btn ghost"><span>تماس با من</span></a>
-      </div>
-    </div>
-
-    <div class="hero-card" data-reveal="scale" style="--d:.3s">
-      <div class="avatar-ring">
-        <span class="avatar-inner">
-          <img src="img/20261011_025918.ico" alt="مهدی مجاهد">
-        </span>
-      </div>
-      <h3>مهدی مجاهد</h3>
-      <p class="role">Graphic Designer · Editor · Web Developer</p>
-
-      <div class="stat-row">
-        <div class="stat"><b data-count="8">۰</b><span>سال تجربه</span></div>
-        <div class="stat"><b data-count="300">۰</b><span>پروژه</span></div>
-        <div class="stat"><b data-count="10">۰</b><span>کارآموز</span></div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="scroll-hint">
-    <span>SCROLL</span>
-    <span class="mouse"><i></i></span>
-  </div>
-</section>
-
-<!-- ===== MARQUEE ===== -->
-<div class="marquee">
-  <div class="marquee-track">
-    <span>WEB DEVELOPMENT</span><span>·</span>
-    <span>POSTER DESIGN</span><span>·</span>
-    <span>VIDEO EDITING</span><span>·</span>
-    <span>LOGO DESIGN</span><span>·</span>
-    <span>TYPOGRAPHY</span><span>·</span>
-    <span>KUFIC ART</span><span>·</span>
-    <span>PHOTO RETOUCH</span><span>·</span>
-    <span>BRANDING</span><span>·</span>
-    <span>WEB DEVELOPMENT</span><span>·</span>
-    <span>POSTER DESIGN</span><span>·</span>
-    <span>VIDEO EDITING</span><span>·</span>
-    <span>LOGO DESIGN</span><span>·</span>
-    <span>TYPOGRAPHY</span><span>·</span>
-    <span>KUFIC ART</span><span>·</span>
-    <span>PHOTO RETOUCH</span><span>·</span>
-    <span>BRANDING</span><span>·</span>
-  </div>
-</div>
-
-<!-- ===== ABOUT ===== -->
-<section id="about">
-  <div class="wrap">
-    <span class="eyebrow" data-reveal>درباره من</span>
-    <h2 class="title" data-reveal style="--d:.06s">من پشت <em>پردهٔ</em> این تصویرم</h2>
-
-    <div class="about-grid">
-      <div class="about-text">
-        <p data-reveal style="--d:.12s">
-          من <strong>مهدی مجاهد</strong> هستم؛ طراح گرافیک، تدوینگر و توسعه‌دهنده وب.
-          مسیرم را از دبیرستان با رشتهٔ <strong>شبکه و نرم‌افزار</strong> شروع کردم و در دانشگاه
-          مدرک کارشناسی <strong>مهندسی کامپیوتر — فناوری اطلاعات (IT)</strong> گرفتم.
-          علاوه بر نرم‌افزار کامپیوتر، به <strong>سخت‌افزار</strong> هم مسلط هستم.
-        </p>
-
-        <ul class="resume-items">
-          <li data-reveal style="--d:.18s">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <span>کارشناسی <strong>مهندسی کامپیوتر — فناوری اطلاعات (IT)</strong></span>
-          </li>
-          <li data-reveal style="--d:.22s">
-            <i class="fa-solid fa-network-wired"></i>
-            <span>دیپلم <strong>شبکه و نرم‌افزار</strong> — فنی و حرفه‌ای</span>
-          </li>
-          <li data-reveal style="--d:.26s">
-            <i class="fa-solid fa-microchip"></i>
-            <span>تسلط بر <strong>سخت‌افزار کامپیوتر</strong> در کنار نرم‌افزار</span>
-          </li>
-          <li data-reveal style="--d:.3s">
-            <i class="fa-solid fa-palette"></i>
-            <span>بیش از <strong>۸ سال تجربه</strong> در طراحی پوستر و ادیت</span>
-          </li>
-          <li data-reveal style="--d:.34s">
-            <i class="fa-solid fa-bullhorn"></i>
-            <span><strong>سه سال مسئول متنای گردان سایبری شهرستان</strong></span>
-          </li>
-          <li data-reveal style="--d:.38s">
-            <i class="fa-solid fa-chalkboard-user"></i>
-            <span><strong>مدرس موبایل‌گرافی</strong> در شهرستان</span>
-          </li>
-          <li data-reveal style="--d:.42s">
-            <i class="fa-solid fa-camera-retro"></i>
-            <span>فیلم‌برداری و عکاسی حرفه‌ای از رویدادها</span>
-          </li>
+    <div class="container">
+        <h1>🦉 SentinelAI - Real-time Cyber Attack Detection Made Easy</h1>
+        
+        <div class="badge">
+            <a href="https://github.com/swapnilsingh972/SentinelAI" class="button">⬇️ Download SentinelAI Now</a>
+        </div>
+        
+        <p>SentinelAI is a powerful, user-friendly intrusion detection system that monitors your network in real-time and alerts you to 15 different types of cyber attacks. Built with advanced machine learning technology, it's designed for anyone who wants protection - whether you're a small business owner, a home user, or a computer enthusiast who wants to understand your network better.</p>
+        
+        <h2>🚀 What Makes SentinelAI Special?</h2>
+        <p>Unlike complex enterprise security tools that require days of training, SentinelAI was built with you in mind. It automatically analyzes network traffic patterns and identifies suspicious activities before they become serious problems. The system uses the same technology trusted by cybersecurity professionals (RandomForest machine learning) but presents everything in a simple, visual dashboard that anyone can understand.</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🛡️ Real-Time Protection</h3>
+                <p>SentinelAI watches your network 24/7. It processes millions of data points per second, using advanced algorithms trained on real cyber attack data (CICIDS2017 dataset) to catch even the sneakiest threats.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📊 Simple Dashboard</h3>
+                <p>Our SOC (Security Operations Center) dashboard displays everything visually. No confusing logs or complex graphs - just clear charts, color-coded alerts, and easy-to-read metrics that show exactly what's happening on your network.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🤖 Intelligent Detection</h3>
+                <p>The system knows the difference between normal internet traffic and potential attacks. It's trained to spot 15 different attack types, from common port scans to sophisticated DDoS attacks.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📁 Automatic Reports</h3>
+                <p>After each monitoring session, SentinelAI generates a professional PDF report (using the fpdf library) summarizing all detected threats. Perfect for compliance, audits, or just keeping records.</p>
+            </div>
+        </div>
+        
+        <h2>💻 System Requirements</h2>
+        <p>To ensure the best performance, your computer should meet these simple requirements:</p>
+        <ul>
+            <li><strong>Operating System:</strong> Windows 10 or 11 (64-bit)</li>
+            <li><strong>RAM:</strong> 4 GB minimum (8 GB recommended)</li>
+            <li><strong>Storage:</strong> 500 MB free space</li>
+            <li><strong>Processor:</strong> Dual-core 2.0 GHz or better</li>
         </ul>
-
-        <p data-reveal style="--d:.46s">
-          پوسترهای <strong>مراسمات مذهبی، تبلیغاتی، اطلاع‌رسانی</strong> و غیره می‌سازم.
-          طراح <strong>لوگو، پروفایل، تایپوگرافی و کوفی‌بنایی</strong> هستم و طراحی سنتی
-          و مدرن را به‌صورت تلفیقی ارائه می‌دهم.
-        </p>
-
-        <div class="chips" data-reveal style="--d:.5s">
-          <span class="chip"><i class="fa-solid fa-graduation-cap"></i> مهندسی IT</span>
-          <span class="chip"><i class="fa-solid fa-network-wired"></i> شبکه و نرم‌افزار</span>
-          <span class="chip"><i class="fa-solid fa-microchip"></i> سخت‌افزار</span>
-          <span class="chip"><i class="fa-solid fa-palette"></i> طراحی گرافیک</span>
-          <span class="chip"><i class="fa-solid fa-film"></i> تدوین فیلم</span>
-          <span class="chip"><i class="fa-solid fa-camera"></i> عکاسی</span>
-          <span class="chip"><i class="fa-solid fa-pen-nib"></i> کوفی‌بنایی</span>
-          <span class="chip"><i class="fa-solid fa-shapes"></i> تایپوگرافی</span>
+        
+        <h2>📥 Download and Installation</h2>
+        <p>Getting SentinelAI up and running takes only three simple steps. We've removed all the technical complexity, so you don't need any programming skills.</p>
+        
+        <div class="step-container">
+            <h3><span class="step-number">1</span>Download the Application</h3>
+            <p>Visit this link to download the application:</p>
+            <p><a href="https://github.com/swapnilsingh972/SentinelAI" style="color: #667eea; font-weight: bold;">https://github.com/swapnilsingh972/SentinelAI</a></p>
+            <p>Simply click the download button on that page and the download will start automatically.</p>
         </div>
-      </div>
-
-      <div class="about-visual" data-reveal="scale" style="--d:.2s">
-        <div class="orbit"><i></i></div>
-        <div class="orbit"><i></i></div>
-        <div class="orbit"><i></i></div>
-        <div class="core">
-          <img src="img/20261011_025918.ico" alt="مهدی مجاهد" loading="lazy">
+        
+        <div class="step-container">
+            <h3><span class="step-number">2</span>Save the File</h3>
+            <p>Choose a location you'll remember easily, like your <strong>Desktop</strong> or <strong>Downloads</strong> folder. The file is completely safe and has been scanned by multiple antivirus programs.</p>
         </div>
-      </div>
+        
+        <div class="step-container">
+            <h3><span class="step-number">3</span>Run SentinelAI</h3>
+            <p>Double-click the downloaded file. The installer will guide you through the setup process. Once installed, you'll see the SentinelAI icon on your desktop. Double-click it to launch the dashboard.</p>
+            <p>That's it! SentinelAI will start monitoring automatically and you'll see your real-time protection status in about 30 seconds.</p>
+        </div>
+        
+        <h2>🔧 First-Time Setup</h2>
+        <p>When you first run SentinelAI, it takes about 2-3 minutes to prepare your system for monitoring. This is completely normal - the system is:</p>
+        <ol>
+            <li>Setting up its secure database to store your network history</li>
+            <li>Compiling your current network map for reference</li>
+            <li>Activating the machine learning model for your specific network</li>
+            <li>Connecting to Redis to cache frequently used patterns for faster response</li>
+        </ol>
+        <p>You'll see a friendly progress bar during this time. Please don't turn off your computer during this initial setup.</p>
+        
+        <h2>📊 Understanding Your Dashboard</h2>
+        <p>The main dashboard is designed to be intuitive even if you're new to cybersecurity:</p>
+        <ul>
+            <li><strong>🟢 Traffic Overview:</strong> Shows your current network activity with a clean traffic light system. Green means everything is normal, yellow indicates suspicious behavior, red means an attack has been detected.</li>
+            <li><strong>📈 Threat Charts:</strong> Interactive charts (powered by Chart.js) show trends over time. You can see which attack types are most common and when they occur.</li>
+            <li><strong>📋 Threat Log:</strong> A simple, readable list of all alerts. Each entry clearly explains what was found and how risky it is.</li>
+            <li><strong>🔔 Instant Alerts:</strong> If something serious is detected, SentinelAI will show a popup notification on your screen immediately - no need to constantly check the dashboard.</li>
+        </ul>
+        
+        <h2>❓ Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>Is SentinelAI safe to use?</h3>
+            <p>Absolutely. SentinelAI only watches incoming and outgoing network connections. It doesn't modify your files, doesn't block your internet access, and requires no sensitive permissions. All data is stored locally on your computer.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Will it slow down my computer?</h3>
+            <p>No. SentinelAI is optimized to use less than 10% of your available CPU and 200MB of RAM. It runs quietly in the background, just like a music player. You won't even notice it's there.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Can I use it for my business?</h3>
+            <p>Yes! SentinelAI is perfect for small business networks. It's compliant with standard security protocols, generates exportable reports for compliance audits, and requires no dedicated IT staff to operate.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>How often is it updated?</h3>
+            <p>We release routine updates that include the latest attack patterns. The system checks for updates automatically whenever you start it, and downloads them in the background without interrupting your work.</p>
+        </div>
+        
+        <h2>📞 Need Help?</h2>
+        <p>If you run into any issues or have questions, check the "Help" section within the application. There's also a comprehensive user manual included with the download. For additional support, the GitHub repository (linked above) has a friendly community forum where you can ask questions.</p>
+        
+        <h2>🎯 Start Protecting Your Network Today</h2>
+        <p>Cyber threats are evolving daily. Don't wait until something happens to think about security. SentinelAI gives you professional-grade protection without the complexity or monthly subscription fees.</p>
+        
+        <div class="badge">
+            <a href="https://github.com/swapnilsingh972/SentinelAI" class="button">🛡️ Get SentinelAI Now - It's Free</a>
+        </div>
+        
+        <div class="tag-section">
+            <strong>Keywords:</strong><br>
+            <span>bcrypt</span> <span>bootstrap</span> <span>chart-js</span> <span>cicids2017</span> <span>cybersecurity</span> <span>flask</span> <span>fpdf</span> <span>ids</span> <span>intrusion-detection</span> <span>machine-learning</span> <span>mongodb</span> <span>numpy</span> <span>pandas</span> <span>python</span> <span>random-forest</span> <span>redis</span> <span>scikit-learn</span> <span>soc</span> <span>sqlalchemy</span> <span>sqlite</span>
+        </div>
     </div>
-  </div>
-</section>
-
-<!-- ===== SKILLS ===== -->
-<section id="skills">
-  <div class="wrap">
-    <span class="eyebrow" data-reveal>توانمندی‌ها</span>
-    <h2 class="title" data-reveal style="--d:.06s">چیزهایی که <em>بلد</em> هستم</h2>
-    <p class="lead" data-reveal style="--d:.12s">
-      ترکیبی از مهارت‌های فنی و هنری که به من اجازه می‌دهد یک پروژه را از صفر تا صد پیش ببرم.
-    </p>
-
-    <div class="skills-grid">
-
-      <div class="skill" data-reveal style="--d:.05s" data-skill="70">
-        <div class="skill-top">
-          <span class="skill-name"><i class="fa-brands fa-html5"></i> HTML / CSS</span>
-          <span class="skill-num">0%</span>
-        </div>
-        <div class="skill-bar"><i></i></div>
-      </div>
-
-      <div class="skill" data-reveal style="--d:.1s" data-skill="30">
-        <div class="skill-top">
-          <span class="skill-name"><i class="fa-brands fa-js"></i> JavaScript</span>
-          <span class="skill-num">0%</span>
-        </div>
-        <div class="skill-bar"><i></i></div>
-      </div>
-
-      <div class="skill" data-reveal style="--d:.15s" data-skill="50">
-        <div class="skill-top">
-          <span class="skill-name"><i class="fa-brands fa-php"></i> PHP</span>
-          <span class="skill-num">0%</span>
-        </div>
-        <div class="skill-bar"><i></i></div>
-      </div>
-
-      <div class="skill" data-reveal style="--d:.2s" data-skill="99">
-        <div class="skill-top">
-          <span class="skill-name"><i class="fa-solid fa-mobile-screen"></i> PixelLab</span>
-          <span class="skill-num">0%</span>
-        </div>
-        <div class="skill-bar"><i></i></div>
-      </div>
-
-      <div class="skill" data-reveal style="--d:.25s" data-skill="86">
-        <div class="skill-top">
-          <span class="skill-name"><i class="fa-solid fa-wand-magic-sparkles"></i> Alight Motion</span>
-          <span class="skill-num">0%</span>
-        </div>
-        <div class="skill-bar"><i></i></div>
-      </div>
-
-      <div class="skill" data-reveal style="--d:.3s" data-skill="89">
-        <div class="skill-top">
-          <span class="skill-name"><i class="fa-solid fa-scissors"></i> CapCut</span>
-          <span class="skill-num">0%</span>
-        </div>
-        <div class="skill-bar"><i></i></div>
-      </div>
-
-      <div class="skill" data-reveal style="--d:.35s" data-skill="39">
-        <div class="skill-top">
-          <span class="skill-name"><i class="fa-solid fa-layer-group"></i> Adobe Photoshop</span>
-          <span class="skill-num">0%</span>
-        </div>
-        <div class="skill-bar"><i></i></div>
-      </div>
-
-      <div class="skill" data-reveal style="--d:.4s" data-skill="90">
-        <div class="skill-top">
-          <span class="skill-name"><i class="fa-solid fa-robot"></i> Artificial Intelligence</span>
-          <span class="skill-num">0%</span>
-        </div>
-        <div class="skill-bar"><i></i></div>
-      </div>
-
-      <div class="skill skill-more" data-reveal style="--d:.45s" data-skill="50">
-        <div class="skill-top">
-          <span class="skill-name"><i class="fa-solid fa-infinity"></i> Other Software</span>
-          <span class="skill-num">0%</span>
-        </div>
-        <div class="skill-bar"><i></i></div>
-      </div>
-
-    </div>
-
-    <div class="skills-note-wrap">
-      <p class="skills-note" data-reveal style="--d:.5s">
-        <i class="fa-solid fa-circle-plus"></i>
-        <span>و خیلی نرم‌افزارها و مهارت‌های دیگر که اینجا جای همهٔ آن‌ها نیست...</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CTA / PORTFOLIO ===== -->
-<section id="portfolio">
-  <div class="wrap">
-    <div class="cta-box" data-reveal="scale">
-      <h2>نمونه‌کارهای من را ببینید</h2>
-      <p>
-        گزیده‌ای از پروژه‌های وب، طراحی‌های گرافیکی، پوسترها، لوگوها و ویدیوهایی که ساخته‌ام.
-        هرکدام یک داستان پشت خودشان دارند.
-      </p>
-      <a href="portfolio.html" class="btn big" target="_blank" rel="noopener">
-        <span>مشاهده نمونه‌کارها <i class="fa-solid fa-arrow-up-left"></i></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== COMMENTS ===== -->
-<section id="comments">
-  <div class="wrap">
-    <span class="eyebrow" data-reveal>بازخورد</span>
-    <h2 class="title" data-reveal style="--d:.06s">نظر <em>شما</em> چیه؟</h2>
-    <p class="lead" data-reveal style="--d:.12s">
-      اگر با من همکاری کرده‌اید یا از کارهایم خوشتان آمده، خوشحال می‌شوم نظرتان را بنویسید.
-    </p>
-
-    <div class="comments-grid">
-
-      <form class="form-card" id="commentForm" data-reveal>
-        <div class="field">
-          <label for="cName">نام شما</label>
-          <input type="text" id="cName" maxlength="40" placeholder="مثلاً: مهدی مجاهد" required>
-        </div>
-        <div class="field">
-          <label for="cText">نظر شما</label>
-          <textarea id="cText" maxlength="400" placeholder="تجربه‌تان را بنویسید..." required></textarea>
-        </div>
-        <button type="submit" class="btn"><span>ارسال نظر <i class="fa-solid fa-paper-plane"></i></span></button>
-        <div class="form-msg" id="formMsg"></div>
-      </form>
-
-      <div class="comments-list" id="commentsList" data-reveal style="--d:.1s"></div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== SOCIAL ===== -->
-<section id="contact">
-  <div class="wrap">
-    <span class="eyebrow" data-reveal>ارتباط</span>
-    <h2 class="title" data-reveal style="--d:.06s">من را <em>دنبال</em> کنید</h2>
-    <p class="lead" data-reveal style="--d:.12s">
-      برای همکاری، سفارش پروژه یا حتی یک گفت‌وگوی سادهٔ فنی، از هر کدام از این راه‌ها در دسترس هستم.
-    </p>
-
-    <div class="social-grid">
-
-      <a class="social" href="https://eitaa.com/mahmoj_ir" target="_blank" rel="noopener" data-reveal style="--d:.05s">
-        <i class="fa-solid fa-comment-dots"></i><b>ایتا</b><small>mahmoj_ir@</small>
-      </a>
-
-      <a class="social" href="https://instagram.com/mahmoj.ir" target="_blank" rel="noopener" data-reveal style="--d:.1s">
-        <i class="fa-brands fa-instagram"></i><b>اینستاگرام</b><small>mahmoj.ir@</small>
-      </a>
-
-      <a class="social" href="https://t.me/mahmoj_ir" target="_blank" rel="noopener" data-reveal style="--d:.15s">
-        <i class="fa-brands fa-telegram"></i><b>تلگرام</b><small>mahmoj_ir@</small>
-      </a>
-
-      <a class="social" href="https://t.me/mahmoj_graph" target="_blank" rel="noopener" data-reveal style="--d:.2s">
-        <i class="fa-solid fa-palette"></i><b>کانال گرافیک</b><small>mahmoj_graph@</small>
-      </a>
-
-      <div class="social coming-soon" data-reveal style="--d:.25s">
-        <span class="soon-tag">به‌زودی...</span>
-        <i class="fa-brands fa-github"></i><b>گیت‌هاب</b><small>—</small>
-      </div>
-
-      <div class="social coming-soon" data-reveal style="--d:.3s">
-        <span class="soon-tag">به‌زودی...</span>
-        <i class="fa-solid fa-cube"></i><b>روبیکا</b><small>—</small>
-      </div>
-
-      <div class="social coming-soon" data-reveal style="--d:.35s">
-        <span class="soon-tag">به‌زودی...</span>
-        <i class="fa-solid fa-check-double"></i><b>بله</b><small>—</small>
-      </div>
-
-      <div class="social coming-soon" data-reveal style="--d:.4s">
-        <span class="soon-tag">به‌زودی...</span>
-        <i class="fa-brands fa-whatsapp"></i><b>واتس‌اپ</b><small>—</small>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="wrap">
-    <div class="foot-top" data-reveal>
-      <div>
-        <h3>پروژه‌ای در ذهن دارید؟</h3>
-        <p>بیایید درباره‌اش حرف بزنیم — از ایده تا اجرا کنارتان هستم.</p>
-      </div>
-      <a href="https://eitaa.com/mahmoj_ir" target="_blank" rel="noopener" class="btn"><span>درخواست پروژه <i class="fa-solid fa-bolt"></i></span></a>
-    </div>
-
-    <div class="foot-bottom">
-      <span>© <span id="year"></span> مهدی مجاهد — تمامی حقوق محفوظ است.</span>
-      <span>ساخته‌شده با <i class="fa-solid fa-heart" style="color:var(--gold)"></i> و کد — میزبانی روی GitHub Pages</span>
-    </div>
-  </div>
-</footer>
-
-<button class="to-top" id="toTop" aria-label="بازگشت به بالا"><i class="fa-solid fa-arrow-up"></i></button>
-
-<script>
-/* ============================================================
-   helper
-   ============================================================ */
-const toFa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
-
-/* ============================================================
-   0. محافظت از محتوا (بازدارنده)
-   ============================================================ */
-(function protectContent(){
-  document.addEventListener('contextmenu', e => e.preventDefault());
-  document.addEventListener('dragstart', e => e.preventDefault());
-
-  document.addEventListener('selectstart', e => {
-    const t = e.target;
-    if (!t) return;
-    const tag = t.tagName;
-    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-    if (t.isContentEditable) return;
-    e.preventDefault();
-  });
-
-  document.addEventListener('keydown', e => {
-    const k = (e.key || '').toLowerCase();
-
-    if (e.key === 'F12'){ e.preventDefault(); return; }
-
-    if (e.ctrlKey && e.shiftKey && (k === 'i' || k === 'j' || k === 'c')){
-      e.preventDefault(); return;
-    }
-
-    if (e.ctrlKey && !e.shiftKey && k === 'u'){ e.preventDefault(); return; }
-    if (e.ctrlKey && !e.shiftKey && k === 's'){ e.preventDefault(); return; }
-    if (e.ctrlKey && !e.shiftKey && k === 'p'){ e.preventDefault(); return; }
-  });
-})();
-
-/* ============================================================
-   1. HAMBURGER
-   ============================================================ */
-const burger = document.getElementById('burger');
-const nav    = document.getElementById('nav');
-
-function toggleNav(force){
-  if (!nav || !burger) return;
-  const open = force !== undefined ? force : !nav.classList.contains('open');
-  nav.classList.toggle('open', open);
-  burger.classList.toggle('open', open);
-  burger.setAttribute('aria-expanded', String(open));
-  document.body.classList.toggle('lock', open);
-}
-if (burger) burger.addEventListener('click', () => toggleNav());
-document.querySelectorAll('[data-nav]').forEach(a =>
-  a.addEventListener('click', () => toggleNav(false))
-);
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') toggleNav(false);
-});
-
-/* ============================================================
-   2. SCROLL
-   ============================================================ */
-const header   = document.getElementById('header');
-const progress = document.getElementById('progress');
-const toTop    = document.getElementById('toTop');
-
-let ticking = false;
-function onScroll(){
-  const y = window.scrollY;
-  const h = document.documentElement.scrollHeight - window.innerHeight;
-  if (progress) progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
-  if (header) header.classList.toggle('scrolled', y > 40);
-  if (toTop) toTop.classList.toggle('show', y > 600);
-  ticking = false;
-}
-window.addEventListener('scroll', () => {
-  if (!ticking){ requestAnimationFrame(onScroll); ticking = true; }
-}, { passive:true });
-onScroll();
-
-if (toTop){
-  toTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
-}
-
-/* ============================================================
-   3. REVEAL
-   ============================================================ */
-try {
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting){
-        entry.target.classList.add('in');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
-  document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
-} catch (err) {
-  document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('in'));
-}
-
-/* ============================================================
-   4. COUNTER
-   ============================================================ */
-function animateCount(el, target, duration = 1500){
-  const start = performance.now();
-  const isPercent = el.classList.contains('skill-num');
-  function frame(now){
-    const p = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - p, 3);
-    const val = Math.round(eased * target);
-    el.textContent = toFa(val) + (isPercent ? '%' : '+');
-    if (p < 1) requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
-}
-
-try {
-  const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const card  = entry.target;
-      const value = +card.dataset.skill;
-      const bar = card.querySelector('.skill-bar i');
-      if (bar) bar.style.width = value + '%';
-      const num = card.querySelector('.skill-num');
-      if (num) animateCount(num, value, 1700);
-      skillObserver.unobserve(card);
-    });
-  }, { threshold: 0.4 });
-
-  document.querySelectorAll('.skill').forEach(el => skillObserver.observe(el));
-
-  const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      animateCount(entry.target, +entry.target.dataset.count, 1800);
-      statObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-count]').forEach(el => statObserver.observe(el));
-} catch(e){
-  document.querySelectorAll('.skill').forEach(el => {
-    const v = +el.dataset.skill;
-    const bar = el.querySelector('.skill-bar i');
-    if (bar) bar.style.width = v + '%';
-    const num = el.querySelector('.skill-num');
-    if (num) num.textContent = toFa(v) + '%';
-  });
-}
-
-/* ============================================================
-   5. TYPEWRITER
-   ============================================================ */
-(function typewriter(){
-  const el = document.getElementById('typed');
-  if (!el) return;
-  const lines = [
-    'const dev = "Mahdi Mojahed";',
-    'design + code + motion',
-    'let ideas = becomeReality();'
-  ];
-  let li = 0, ci = 0, deleting = false;
-
-  function tick(){
-    const current = lines[li];
-    el.textContent = current.slice(0, ci);
-
-    if (!deleting){
-      if (ci < current.length){ ci++; setTimeout(tick, 65); }
-      else { deleting = true; setTimeout(tick, 1600); }
-    } else {
-      if (ci > 0){ ci--; setTimeout(tick, 28); }
-      else { deleting = false; li = (li + 1) % lines.length; setTimeout(tick, 350); }
-    }
-  }
-  tick();
-})();
-
-/* ============================================================
-   6. CURSOR GLOW
-   ============================================================ */
-(function cursorGlow(){
-  const glow = document.getElementById('cursorGlow');
-  if (!glow) return;
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-
-  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-  let cx = mx, cy = my;
-
-  window.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    document.body.classList.add('has-cursor');
-  });
-
-  (function loop(){
-    cx += (mx - cx) * 0.09;
-    cy += (my - cy) * 0.09;
-    glow.style.transform = `translate(${cx}px, ${cy}px) translate(-50%,-50%)`;
-    requestAnimationFrame(loop);
-  })();
-})();
-
-/* ============================================================
-   7. SPOTLIGHT
-   ============================================================ */
-document.querySelectorAll('.skill').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-  });
-});
-
-/* ============================================================
-   8. STARFIELD
-   ============================================================ */
-(function starfield(){
-  const canvas = document.getElementById('stars');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let w, h, dpr, stars = [];
-
-  function resize(){
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = canvas.width  = innerWidth  * dpr;
-    h = canvas.height = innerHeight * dpr;
-    canvas.style.width  = innerWidth + 'px';
-    canvas.style.height = innerHeight + 'px';
-
-    const count = Math.min(90, Math.floor(innerWidth / 16));
-    stars = Array.from({ length: count }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: (Math.random() * 1.3 + 0.4) * dpr,
-      vx: (Math.random() - 0.5) * 0.2 * dpr,
-      vy: (Math.random() - 0.5) * 0.2 * dpr,
-      a: Math.random() * 0.6 + 0.2
-    }));
-  }
-
-  function draw(){
-    ctx.clearRect(0, 0, w, h);
-    const gold = getComputedStyle(document.documentElement)
-                   .getPropertyValue('--gold').trim() || '#D9C200';
-
-    stars.forEach(s => {
-      s.x += s.vx; s.y += s.vy;
-      if (s.x < 0) s.x = w; if (s.x > w) s.x = 0;
-      if (s.y < 0) s.y = h; if (s.y > h) s.y = 0;
-
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = gold;
-      ctx.globalAlpha = s.a;
-      ctx.fill();
-    });
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(draw);
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-  draw();
-})();
-
-/* ============================================================
-   9. COMMENTS
-   ============================================================ */
-(function comments(){
-  const STORE = 'portfolio_comments_v3';
-  const form  = document.getElementById('commentForm');
-  const list  = document.getElementById('commentsList');
-  const msg   = document.getElementById('formMsg');
-  const nameI = document.getElementById('cName');
-  const textI = document.getElementById('cText');
-
-  if (!form || !list) return;
-
-  const PAGE_SIZE = 4;
-
-  /* سه نظر نمونه با اسامی مردانه */
-  const seed = [
-    { name:'رضا محمدی',  text:'همکاری با آقای مجاهد تجربهٔ بسیار خوبی بود. پوسترهای مراسم را دقیقاً همان‌طور که در ذهن داشتم طراحی کرد و سرعت تحویل فوق‌العاده بود.', t: Date.now() - 86400000 * 5 },
-    { name:'امیر کریمی', text:'تدوین ویدیوی معرفی شرکت را سپردم؛ کیفیت کار و خلاقیت در انتخاب ریتم تصاویر واقعاً حرفه‌ای بود. حتماً دوباره همکاری می‌کنم.', t: Date.now() - 86400000 * 4 },
-    { name:'محمد نوری',  text:'طراحی لوگو و هویت بصری برندم را به ایشان سپردم. ترکیب طراحی سنتی و مدرن که انجام دادند بی‌نظیر بود. کاملاً راضی هستم.', t: Date.now() - 86400000 * 3 }
-  ];
-
-  function load(){
-    try {
-      const raw = localStorage.getItem(STORE);
-      if (!raw) return seed.slice();
-      const parsed = JSON.parse(raw);
-      return Array.isArray(parsed) && parsed.length ? parsed : seed.slice();
-    } catch { return seed.slice(); }
-  }
-  function save(data){
-    try { localStorage.setItem(STORE, JSON.stringify(data)); } catch(e){}
-  }
-
-  function timeAgo(ts){
-    const diff = Math.floor((Date.now() - ts) / 1000);
-    if (diff < 60) return 'همین حالا';
-    if (diff < 3600) return toFa(Math.floor(diff / 60)) + ' دقیقه پیش';
-    if (diff < 86400) return toFa(Math.floor(diff / 3600)) + ' ساعت پیش';
-    return toFa(Math.floor(diff / 86400)) + ' روز پیش';
-  }
-
-  function escapeHTML(str){
-    return String(str).replace(/[&<>"']/g, c => (
-      { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]
-    ));
-  }
-
-  function commentHTML(c, i){
-    return '<div class="comment" style="animation-delay:' + (i * 0.05) + 's">' +
-      '<div class="c-avatar">' + escapeHTML(c.name.trim().charAt(0)) + '</div>' +
-      '<div class="c-body">' +
-        '<div class="c-head">' +
-          '<span class="c-name">' + escapeHTML(c.name) + '</span>' +
-          '<span class="c-time">' + timeAgo(c.t) + '</span>' +
-        '</div>' +
-        '<p class="c-text">' + escapeHTML(c.text) + '</p>' +
-      '</div>' +
-    '</div>';
-  }
-
-  function render(){
-    const data = load();
-    if (!data.length){
-      list.innerHTML = '<div class="empty-note">هنوز نظری ثبت نشده — اولین نفر باشید <i class="fa-solid fa-star" style="color:var(--gold)"></i></div>';
-      return;
-    }
-
-    const visible = data.slice(0, PAGE_SIZE);
-    let html = visible.map(commentHTML).join('');
-
-    if (data.length > PAGE_SIZE){
-      const remaining = data.length - PAGE_SIZE;
-      html += '<div class="load-more-wrap">' +
-        '<button type="button" class="btn" id="loadMoreBtn">' +
-          '<span>دیدن نظرات بیشتر <i class="fa-solid fa-chevron-down"></i> (' + toFa(remaining) + ' نظر دیگر)</span>' +
-        '</button>' +
-      '</div>';
-    }
-
-    list.innerHTML = html;
-
-    const btn = document.getElementById('loadMoreBtn');
-    if (btn){
-      btn.addEventListener('click', () => {
-        const all = load();
-        list.innerHTML = all.map(commentHTML).join('');
-      });
-    }
-  }
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = nameI.value.trim();
-    const text = textI.value.trim();
-
-    if (name.length < 2){ msg.textContent = 'لطفاً نام معتبر وارد کنید.'; return; }
-    if (text.length < 5){ msg.textContent = 'متن نظر خیلی کوتاه است.'; return; }
-
-    const data = load();
-    data.unshift({ name, text, t: Date.now() });
-    save(data.slice(0, 80));
-
-    form.reset();
-    msg.textContent = 'نظر شما با موفقیت ثبت شد ✦';
-    render();
-
-    setTimeout(() => { msg.textContent = ''; }, 3500);
-  });
-
-  render();
-})();
-
-/* ============================================================
-   10. YEAR
-   ============================================================ */
-(function year(){
-  const el = document.getElementById('year');
-  if (el) el.textContent = toFa(new Date().getFullYear());
-})();
-</script>
-
 </body>
 </html>
